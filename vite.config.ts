@@ -1,27 +1,18 @@
-import path from 'path'
-
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
-import dts from 'vite-dts'
+import react from '@vitejs/plugin-react'
+import dts from 'vite-plugin-dts'
 
-const isExternal = (id: string) => !id.startsWith('.') && !path.isAbsolute(id)
-
-export default defineConfig(() => ({
-   esbuild: {
-      // jsxInject: "import React from 'react'",
-   },
+export default defineConfig({
+   plugins: [react(), dts({})],
    build: {
       lib: {
-         entry: path.resolve(__dirname, 'src/components/index.ts'),
-         formats: ['es'],
-         fileName: 'index',
+         entry: resolve(__dirname, 'src/index.ts'),
+         name: 'ReactFeatureFlag',
+         fileName: (format) => `index.${format}.js`,
       },
-      input: ['src/components/index.ts'],
       rollupOptions: {
-         external: isExternal,
-         output: {
-            preserveModules: true,
-         },
+         external: ['react'],
       },
    },
-   plugins: [dts()],
-}))
+})

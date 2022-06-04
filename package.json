@@ -1,10 +1,14 @@
 {
-   "name": "@matanol/vite-react-test",
+   "name": "react-render-manager",
    "version": "0.0.1",
-   "main": "dist/index.es.js",
+   "description": "Manage multi conditional renders",
+   "main": "dist/index.umd.js",
    "module": "dist/index.es.js",
-   "types": "dist/index.es.d.ts",
-   "private": true,
+   "types": "dist/index.d.ts",
+   "exports": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
+   },
    "files": [
       "dist"
    ],
@@ -20,8 +24,6 @@
       "react-dom": ">= 17.x"
    },
    "devDependencies": {
-      "react": "^17.0.0",
-      "react-dom": "^17.0.0",
       "@babel/core": "^7.18.2",
       "@storybook/addon-actions": "^6.5.6",
       "@storybook/addon-essentials": "^6.5.6",
@@ -46,8 +48,11 @@
       "eslint-plugin-react": "^7.27.1",
       "eslint-plugin-react-hooks": "^4.3.0",
       "prettier": "^2.5.0",
+      "react": "^17.0.0",
+      "react-dom": "^17.0.0",
       "typescript": "^4.3.2",
       "vite": "^2.6.4",
-      "vite-dts": "^1.0.4"
+      "vite-dts": "^1.0.4",
+      "vite-plugin-dts": "^1.2.0"
    }
 }
