@@ -1,15 +1,21 @@
-import React from 'react'
+import {
+   DefaultRenderManagerStates,
+   RenderManagerProps,
+} from './RenderManager.types'
 
-export interface DefaultRenderManagerStates {
-   isLoading?: boolean
-   isFetching?: boolean
-   isFirstPageLoading?: boolean
-   isError?: boolean
-   isEmpty?: boolean
+function RenderManager<T = DefaultRenderManagerStates>({
+   states,
+   children,
+}: RenderManagerProps<T>) {
+   if (!children) {
+      return null
+   }
+
+   const childrenKeys = Object.keys(children) as (keyof T)[]
+
+   const childKeyToRender = childrenKeys.find((key) => states[key])
+
+   return <>{children[childKeyToRender ?? 'default']}</>
 }
-
-export interface RenderManagerProps {}
-
-const RenderManager = () => <div>RenderManager</div>
 
 export default RenderManager

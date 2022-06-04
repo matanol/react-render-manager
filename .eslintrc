@@ -28,13 +28,7 @@
    "plugins": ["react", "@typescript-eslint", "import"],
    "rules": {
       "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
-      "react/function-component-definition": [
-         2,
-         {
-            "namedComponents": "arrow-function",
-            "unnamedComponents": "arrow-function"
-         }
-      ],
+      "react/function-component-definition": "off",
       "import/no-extraneous-dependencies": "off",
       "react/react-in-jsx-scope": "off",
       "import/extensions": [
@@ -48,6 +42,8 @@
          }
       ],
       "no-restricted-exports": "off",
-      "import/prefer-default-export": "off"
+      "import/prefer-default-export": "off",
+      "react/jsx-no-useless-fragment": "off",
+      "no-underscore-dangle": "off"
    }
 }
