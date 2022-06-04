@@ -12,7 +12,6 @@ function RenderManager<T = DefaultRenderManagerStates>({
    }
 
    const childrenKeys = Object.keys(children) as (keyof T)[]
-
    const childKeyToRender = childrenKeys.find((key) => states[key])
 
    return <>{children[childKeyToRender ?? 'default']}</>
