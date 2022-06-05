@@ -7,7 +7,7 @@ function RenderManager<T = DefaultRenderManagerStates>({
    states,
    children,
 }: RenderManagerProps<T>) {
-   if (!children && typeof children !== 'object') {
+   if (!children?.default) {
       return null
    }
 
