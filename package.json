@@ -1,6 +1,6 @@
 {
    "name": "react-render-manager",
-   "version": "1.0.0",
+   "version": "1.0.1",
    "description": "Manage multi conditional renders",
    "author": "Matan Oliel",
    "keywords": [
