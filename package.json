@@ -1,8 +1,20 @@
 {
    "name": "react-render-manager",
-   "version": "0.0.1",
+   "version": "1.0.0",
    "description": "Manage multi conditional renders",
-   "homepage": "https://github.com/matanol/react-render-manager",
+   "author": "Matan Oliel",
+   "keywords": [
+      "conditional rendering",
+      "multiple conditional rendering",
+      "clean render",
+      "react",
+      "jsx",
+      "typescript"
+   ],
+   "repository": {
+      "type": "git",
+      "url": "https://github.com/matanol/react-render-manager.git"
+   },
    "bugs": {
       "url": "https://github.com/matanol/react-render-manager"
    },
