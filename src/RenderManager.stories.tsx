@@ -9,7 +9,7 @@ export default {
 
 export const _RenderManager = () => {
    const states: DefaultRenderManagerStates = {
-      isError: true,
+      isError: false,
       isLoading: true,
       isEmpty: false,
    }

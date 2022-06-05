@@ -14,9 +14,14 @@
       "resolveJsonModule": true,
       "isolatedModules": true,
       "noEmit": true,
-      "jsx": "react-jsx",
-      "baseUrl": "./src"
+      "jsx": "react-jsx"
    },
    "include": ["./src"],
-   "exclude": ["node_modules", "dist", "showcase"]
+   "exclude": [
+      "node_modules",
+      "dist",
+      "showcase",
+      "vite.config.ts",
+      "vitest.config.ts"
+   ]
 }
