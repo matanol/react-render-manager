@@ -40,13 +40,13 @@ const PostsPage = () => {
 yarn:
 
 ```shell
-	yarn add react-render-manager
+yarn add react-render-manager
 ```
 
 npm:
 
 ```shell
-	npm i react-render-manager
+npm i react-render-manager
 ```
 
 ## Important notes:
