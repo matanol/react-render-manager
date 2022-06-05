@@ -7,6 +7,7 @@ Manage your `JSX` render conditions in more cleaner and consistent way.
 -  🧼 Clean and consistent logic of rendering multiple render conditions
 -  🚀 Feels natural with server state management libraries such as <a href="https://www.npmjs.com/package/react-query">react-query</a> / <a href="https://www.npmjs.com/package/swr">SWR</a> / <a href="https://www.npmjs.com/package/@apollo/client">apollo</a>
 -  ✅ 100% `TypeScript`, types are generic (you can have your own states type)
+-  ✅ 100% test coverage
 
 ## Example with react-query:
 
