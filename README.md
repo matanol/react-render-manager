@@ -6,7 +6,8 @@ Manage your `JSX` render conditions in more cleaner and consistent way.
 
 -  🧼 Clean and consistent logic of rendering multiple render conditions
 -  🚀 Feels natural with server state management libraries such as <a href="https://www.npmjs.com/package/react-query">react-query</a> / <a href="https://www.npmjs.com/package/swr">SWR</a> / <a href="https://www.npmjs.com/package/@apollo/client">apollo</a>
--  ✅ 100% `TypeScript`, types are generic (you can have your own states type)
+-  💫 You can create your own reusable manager with default fallbacks
+-  💪 100% `TypeScript`, types are generic (you can have your own states type)
 -  ✅ 100% test coverage
 
 ## Example with react-query:
@@ -55,6 +56,63 @@ npm i react-render-manager
 > The order of the keys in the children is important and will determine which state will be rendered first if its true.
 
 > Make sure to provide only string keys, as other keys might change the ordering of the keys in the object.
+
+## Reusable manager component with default fallbacks
+
+> Note that the `fallbackChildren` props will always be rendered before the provided children (you can override them)
+
+```jsx
+import RenderManager, { DefaultRenderManagerStates } from 'react-render-manager'
+
+const CommonRenderManager = ({ states, children }) => {
+   return (
+      <RenderManager
+         states={states}
+         fallbackChildren={{
+            isError: 'Default error',
+            isLoading: 'Deault Loading...',
+         }}
+      >
+         {children}
+      </RenderManager>
+   )
+}
+```
+
+Usage (You can omit `isError` and `isLoading`):
+
+```jsx
+const states = {
+   isError: false,
+   isLoading: true,
+}
+
+return (
+   <CommonRenderManager states={states}>
+      {{
+         default: <h1>Rendered</h1>,
+      }}
+   </CommonRenderManager>
+)
+```
+
+You can also override the `fallbackChildren`:
+
+```jsx
+const states = {
+   isError: false,
+   isLoading: true,
+}
+
+return (
+   <CommonRenderManager states={states}>
+      {{
+         isLoading: <h1>New Loading...</h1>,
+         default: <h1>Rendered</h1>,
+      }}
+   </CommonRenderManager>
+)
+```
 
 ## Override the default state type:
 
@@ -142,3 +200,11 @@ export const CustomRenderManager = (
    props: RenderManagerProps<CustomRenderManagerStates>
 ) => <RenderManager {...props} />
 ```
+
+## Props API
+
+| name             | type                                                                           | default                      | description                                                      | required | example                                                      |
+| ---------------- | ------------------------------------------------------------------------------ | ---------------------------- | ---------------------------------------------------------------- | -------- | ------------------------------------------------------------ |
+| states           | `T`, should be as - `{ [key: string]: boolean }`                               | `DefaultRenderManagerStates` | the states of the render conditions                              | true     | `{ isLoading: true, isError: false }`                        |
+| children         | `RenderManagerChildren<T>`, will extend keys of `states` props & `default` key |                              | the render output (by the keys order) based on the `states` prop | true     | `{ isLoading: <h1>Loading</h1>, default: <h1>Default</h1> }` |
+| fallbackChildren | `RenderManagerChildrenBase<T>` Same as children but without `default` key      |                              | default fallback render output, if no children keys provided     | false    | `{ isLoading: <h1>Loading</h1> }`                            |

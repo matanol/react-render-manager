@@ -5,6 +5,7 @@ import RenderManager from './RenderManager'
 import { DefaultRenderManagerStates } from './RenderManager.types'
 import {
    mockChildren,
+   MockContent,
    mockStates,
    MOCK_CONTENT_TEST_ID,
 } from './RenderManager.mock'
@@ -66,5 +67,78 @@ describe(RenderManager.name, () => {
       )
       const elementRef = screen.getByTestId(WRAPPER_TEST_ID)
       expect(elementRef).toBeEmptyDOMElement()
+   })
+
+   test('renders the fallback children provided', () => {
+      const states: DefaultRenderManagerStates = {
+         isError: false,
+         isLoading: true,
+      }
+      render(
+         <div>
+            <RenderManager
+               states={states}
+               fallbackChildren={{
+                  isError: <MockContent>Error</MockContent>,
+                  isLoading: <MockContent>Loading</MockContent>,
+               }}
+            >
+               {{
+                  default: <MockContent>Default</MockContent>,
+               }}
+            </RenderManager>
+         </div>
+      )
+      const elementRef = screen.getByTestId(MOCK_CONTENT_TEST_ID)
+      expect(elementRef).toHaveTextContent('Loading')
+   })
+
+   test('renders the children when fallback children provided', () => {
+      const states: DefaultRenderManagerStates = {
+         isError: false,
+         isLoading: true,
+      }
+      render(
+         <div>
+            <RenderManager
+               states={states}
+               fallbackChildren={{
+                  isError: <MockContent>Error</MockContent>,
+               }}
+            >
+               {{
+                  isLoading: <MockContent>Loading</MockContent>,
+                  default: <MockContent>Default</MockContent>,
+               }}
+            </RenderManager>
+         </div>
+      )
+      const elementRef = screen.getByTestId(MOCK_CONTENT_TEST_ID)
+      expect(elementRef).toHaveTextContent('Loading')
+   })
+
+   test('overriding the fallback children prop', () => {
+      const states: DefaultRenderManagerStates = {
+         isError: true,
+         isLoading: false,
+      }
+      render(
+         <div>
+            <RenderManager
+               states={states}
+               fallbackChildren={{
+                  isError: <MockContent>Error</MockContent>,
+               }}
+            >
+               {{
+                  isError: <MockContent>ErrorOverride</MockContent>,
+                  isLoading: <MockContent>Loading</MockContent>,
+                  default: <MockContent>Default</MockContent>,
+               }}
+            </RenderManager>
+         </div>
+      )
+      const elementRef = screen.getByTestId(MOCK_CONTENT_TEST_ID)
+      expect(elementRef).toHaveTextContent('ErrorOverride')
    })
 })
