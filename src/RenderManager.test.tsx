@@ -95,26 +95,26 @@ describe(RenderManager.name, () => {
 
    test('renders the children when fallback children provided', () => {
       const states: DefaultRenderManagerStates = {
-         isError: false,
-         isLoading: true,
+         isError: true,
+         isLoading: false,
       }
       render(
          <div>
             <RenderManager
                states={states}
                fallbackChildren={{
-                  isError: <MockContent>Error</MockContent>,
+                  isError: <MockContent>Fallback Error</MockContent>,
+                  isLoading: <MockContent>Fallback Loading</MockContent>,
                }}
             >
                {{
-                  isLoading: <MockContent>Loading</MockContent>,
                   default: <MockContent>Default</MockContent>,
                }}
             </RenderManager>
          </div>
       )
       const elementRef = screen.getByTestId(MOCK_CONTENT_TEST_ID)
-      expect(elementRef).toHaveTextContent('Loading')
+      expect(elementRef).toHaveTextContent('Fallback Error')
    })
 
    test('overriding the fallback children prop', () => {
