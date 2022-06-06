@@ -23,5 +23,5 @@ export interface RenderManagerProps<T> {
    /** The render output (by the keys order) based on the `states` prop */
    children: RenderManagerChildren<T>
    /** default fallback render output, if no children keys provided */
-   fallbackChildren?: RenderManagerChildrenBase<T>
+   fallbackChildren?: Partial<RenderManagerChildrenBase<T>>
 }
