@@ -36,6 +36,7 @@
       "storybook": "start-storybook -p 6006",
       "build-storybook": "build-storybook",
       "test": "vitest",
+      "test:nowatch": "vitest run",
       "prepare": "husky install",
       "test:coverage": "vitest run --coverage",
       "commit": "git-cz"
