@@ -39,7 +39,7 @@
       "test:nowatch": "vitest run",
       "prepare": "husky install",
       "test:coverage": "vitest run --coverage",
-      "commit": "git-cz"
+      "ac": "git add . && git-cz"
    },
    "peerDependencies": {
       "react": ">= 17.x"
