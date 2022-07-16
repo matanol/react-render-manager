@@ -63,7 +63,6 @@
       "@typescript-eslint/parser": "^5.16.0",
       "@vitejs/plugin-react": "^1.0.0",
       "babel-loader": "^8.2.5",
-      "commitizen": "^4.2.4",
       "eslint": "^8.3.0",
       "eslint-config-airbnb": "^19.0.1",
       "eslint-config-prettier": "^8.3.0",
