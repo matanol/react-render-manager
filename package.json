@@ -38,6 +38,7 @@
       "test": "vitest",
       "test:nowatch": "vitest run",
       "prepare": "husky install",
+      "semantic-release": "semantic-release",
       "test:coverage": "vitest run --coverage",
       "ac": "git add . && git-cz"
    },
